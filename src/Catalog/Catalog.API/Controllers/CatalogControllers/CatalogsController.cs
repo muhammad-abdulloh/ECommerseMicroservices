@@ -1,5 +1,6 @@
 ﻿using Catalog.Application.Abstractions;
 using Catalog.Application.UseCases.CatalogCases.Commands;
+using Catalog.Application.UseCases.CatalogCases.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,5 +26,12 @@ namespace Catalog.API.Controllers.CatalogControllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllCatalogs()
+        {
+            var catalogs = await _mediator.Send(new GetAllCatalogsQuery());
+
+            return Ok(catalogs);
+        }
     }
 }
