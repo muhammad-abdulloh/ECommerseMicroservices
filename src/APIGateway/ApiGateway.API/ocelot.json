@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7016
+          "Port": 8081
         }
       ],
       "UpstreamPathTemplate": "/api/create/discount",
@@ -17,8 +17,20 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7016
+          "Host": "discount.api",
+          "Port": 8081
+        }
+      ],
+      "UpstreamPathTemplate": "/api/get-all/discounts",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Discounts",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "discount.api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/get-all/discounts",
@@ -30,7 +42,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7111
+          "Port": 8081
         }
       ],
       "UpstreamPathTemplate": "/api/create/catalog",
@@ -42,23 +54,13 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7111
+          "Port": 8081
         }
       ],
       "UpstreamPathTemplate": "/api/get-all/catalogs",
       "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/en/exchange-rates/json",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "nbu.uz"
-        }
-      ],
-      "UpstreamPathTemplate": "/api/get-all/exchange-rates",
-      "UpstreamHttpMethod": [ "GET" ]
     }
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:5000"
