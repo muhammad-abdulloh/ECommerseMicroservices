@@ -1,69 +1,36 @@
 version: '3.4'
 
 services:
+  apigateway.api:
+    image: ${DOCKER_REGISTRY-}apigatewayapi
+    build:
+      context: .
+      dockerfile: src/APIGateway/ApiGateway.API/Dockerfile
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: src/Catalog/Catalog.API/Dockerfile
-    depends_on:
-      - db_service_two
-    networks:
-      - db-network
+
 
   discount.api:
     image: ${DOCKER_REGISTRY-}discountapi
     build:
       context: .
       dockerfile: src/Discount/Discount.API/Dockerfile
-    depends_on:
-      - db_service_discount
-    networks:
-      - db-network
 
 
-  apigateway.api:
-    image: ${DOCKER_REGISTRY-}apigatewayapi
+  orders.api:
+    image: ${DOCKER_REGISTRY-}ordersapi
     build:
       context: .
-      dockerfile: src/APIGateway/ApiGateway.API/Dockerfile
-    networks:
-      - db-network
+      dockerfile: src/Ordering/Orders.API/Dockerfile
 
 
-  
-  db_service_two: 
-    container_name: db_service_two
-    image: postgres:latest  
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=2345
-      - POSTGRES_DB=CatalogAPIDB
-    volumes:
-      - pgdata:/var/lib/postgresql/CatalogAPIDB
-    ports:
-      - "5435:5432"
-    networks:
-      - db-network
-  
-  db_service_discount: 
-    container_name: db_service_discount
-    image: postgres:latest  
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=2345
-      - POSTGRES_DB=DIscountDB
-    volumes:
-      - pgdata:/var/lib/postgresql/DiscountDB
-    ports:
-      - "5434:5432"
-    networks:
-      - db-network
+  shoppingcart.api:
+    image: ${DOCKER_REGISTRY-}shoppingcartapi
+    build:
+      context: .
+      dockerfile: src/ShoppingCart/ShoppingCart.API/Dockerfile
 
-networks:
-  db-network:
-    driver: bridge
-
-volumes:
-  pgdata:

@@ -7,7 +7,8 @@
         "shoppingcart.api": "StartDebugging",
         "catalog.api": "StartDebugging",
         "discount.api": "StartDebugging",
-        "apigateway.api": "StartDebugging"
+        "apigateway.api": "StartDebugging",
+        "orders.api": "StartDebugging"
       }
     }
   }

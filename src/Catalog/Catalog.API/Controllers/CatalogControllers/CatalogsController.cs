@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers.CatalogControllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CatalogsController : ControllerBase
     {
@@ -30,6 +30,14 @@ namespace Catalog.API.Controllers.CatalogControllers
         public async Task<IActionResult> GetAllCatalogs()
         {
             var catalogs = await _mediator.Send(new GetAllCatalogsQuery());
+
+            return Ok(catalogs);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> getCatalog()
+        {
+            var catalogs = new List<string>(){ "Item1", "Item2", "Item3" };
 
             return Ok(catalogs);
         }

@@ -1,68 +1,31 @@
 ﻿{
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/Discounts",
+      "DownstreamPathTemplate": "/WeatherForecast/Get",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "orders.api",
           "Port": 8081
         }
       ],
-      "UpstreamPathTemplate": "/api/create/discount",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/Discounts",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "discount.api",
-          "Port": 8081
-        }
-      ],
-      "UpstreamPathTemplate": "/api/get-all/discounts",
+      "UpstreamPathTemplate": "/get-orders",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Discounts",
+      "DownstreamPathTemplate": "/WeatherForecast/Get",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "discount.api",
+          "Host": "orders.api",
           "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/api/get-all/discounts",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/Catalogs",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 8081
-        }
-      ],
-      "UpstreamPathTemplate": "/api/create/catalog",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/Catalogs",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 8081
-        }
-      ],
-      "UpstreamPathTemplate": "/api/get-all/catalogs",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/get-orders",
+      "UpstreamHttpMethod": ["GET" ]
     }
-
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5000"
+    "BaseUrl": "https://localhost:5067"
   }
 }
